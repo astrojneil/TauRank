@@ -95,3 +95,6 @@ plt.legend()
 #plt.xscale('log')
 #plt.yscale('log')
 plt.show()
+
+
+#I HAVE EDITED THE ANALYSIS FILE
