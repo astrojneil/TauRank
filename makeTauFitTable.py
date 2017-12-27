@@ -37,7 +37,7 @@ def model(t, b, x):
 
 def lnprior(theta):
     t, b = theta
-    if 0.0 < t < 1.e8 and 0.0 < b < 10.0:
+    if 0.0 < t < 1.e8 and 0.0 < b < 100.0:
         return 0.0
     return -np.inf
 
