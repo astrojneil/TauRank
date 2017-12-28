@@ -250,14 +250,14 @@ def model(t, b, x):
 
 #fig, ax = plt.subplots(nrows=2, ncols=2, sharex=True, sharey=True)
 
-for ion in ionList:
+for ion in [ion10]:
     fig = plt.figure()
     ax = plt.subplot(111)
-    for run in runList:
+    for run in [run17]:
         taus, bs = readbestTauB(ion, run['Name'])
         x = np.linspace(0, 1, 7880)
-    #profile = model(taus[0], bs[0], x)
-    #plt.plot(x, profile, label = ion['ion'], color = ion['color'])
+        #profile = model(taus[0], bs[0], x)
+        #ax.plot(x[0:7800], profile[0:7800], label = ion['ion'], color = ion['color'])
     #for i in range(len(taus)):
     #    if i==0:
     #        j=0
@@ -281,4 +281,5 @@ for ion in ionList:
     ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
     #plt.xscale('log')
     fig.set_size_inches(12, 6)
-    fig.savefig('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'.png')
+    fig.savefig('test.png')
+    #fig.savefig('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'.png')

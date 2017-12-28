@@ -12,7 +12,7 @@ def openRankedFile(filename):
     openfile.close()
     return np.array(rankedTaus)
 
-taus = openRankedFile('../rankTau/OVI/rankTauT1_v1700_chi1000_cond_v2.txt')
+taus = openRankedFile('../rankTau/CIII/rankTauT0.3_v3000_chi300_cond_v182.txt')
 totalpixel = len(taus)
 pixelNum = np.arange(0.0, totalpixel, 1.0)
 pixelFrac = pixelNum/totalpixel
@@ -24,9 +24,9 @@ testquad = -.12/(pixelFrac_new**3-1.05)
 testexp = np.exp((pixelFrac_new)**6/1.) - 1
 
 #Try to find the best fit
-def lnprior(theta):
+def lnprior(theta, maxtau):
     tau0, b = theta
-    if 0.00 < tau0 < 1000.0 and 0.0 < b < 3.0:
+    if 0.00 < tau0 < maxtau and 0.0 < b < 1.e2:
         return 0.0
     return -np.inf
 
@@ -35,8 +35,8 @@ def lnlike(theta, tau, frac, err):
     model = tau0*(0.01)/(1.01-frac**b)
     return -0.5*(np.sum((tau - model)**2/err**2))
 
-def lnprob(theta, tau, frac, err):
-    lp = lnprior(theta)
+def lnprob(theta, tau, frac, err, maxtau):
+    lp = lnprior(theta, maxtau)
     if np.isfinite(lp):
         return lp + lnlike(theta, tau, frac, err)
     return -np.inf
@@ -45,7 +45,7 @@ def lnprob(theta, tau, frac, err):
 ndim, nwalkers = 2, 200
 r = np.ones(ndim)
 pos = [r + 1e-4*np.random.randn(ndim) for i in range(nwalkers)]
-sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(taus[clip:], pixelFrac_new, 1e-2))
+sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(taus[clip:], pixelFrac_new, 1e-2, 2*max(taus[clip:])))
 
 print("Running MCMC...")
 sampler.run_mcmc(pos, 1000, rstate0=np.random.get_state())

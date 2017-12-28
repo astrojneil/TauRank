@@ -35,9 +35,9 @@ def findCloudVel(directory, runName, f_list):
 def model(t, b, x):
     return t*(0.01)/(1.01-x**b)
 
-def lnprior(theta):
+def lnprior(theta, maxtau):
     t, b = theta
-    if 0.0 < t < 1.e8 and 0.0 < b < 100.0:
+    if 0.0 < t < maxtau and 0.0 < b < 1.e2:
         return 0.0
     return -np.inf
 
@@ -46,8 +46,8 @@ def lnlike(theta, taus, frac, err):
     model_test = model(t, b, frac)
     return -0.5*(np.sum((taus - model_test)**2/err**2))
 
-def lnprob(theta, taus, frac, err):
-    lp = lnprior(theta)
+def lnprob(theta, taus, frac, err, maxtau):
+    lp = lnprior(theta, maxtau)
     if np.isfinite(lp):
         return lp + lnlike(theta, taus, frac, err)
     return -np.inf
@@ -66,7 +66,7 @@ def runemcee(taus, pixelFrac):
     burnin = 50
     r = np.ones(ndim)
     pos = [r + 1.e-4*np.random.randn(ndim) for i in range(nwalkers)]
-    sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(taus, pixelFrac, 1.e-2))
+    sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(taus, pixelFrac, 1.e-2, 2*max(taus)))
 
     print("Running MCMC...")
     sampler.run_mcmc(pos, 1000, rstate0=np.random.get_state())
@@ -244,9 +244,9 @@ def main():
 
 
     ionList = []
-    #ionList.append(ion1)
-    #ionList.append(ion2)
-    #ionList.append(ion3)
+    ionList.append(ion1)
+    ionList.append(ion2)
+    ionList.append(ion3)
     ionList.append(ion4)
     ionList.append(ion5)
     ionList.append(ion6)
@@ -259,9 +259,11 @@ def main():
     #now the real work
     for ion in ionList:
         print('Started '+ion['ionfolder'][1:-1])
-        ionTable = open('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters.txt', 'w')
+        ionTable = open('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters_2.txt', 'w')
         #write column headers
         ionTable.write('Run, velocity(km/s), tau_fit, upper_tau_err, lower_tau_err, b_fit, upper_b_err, lower_b_err, area, area_err\n')
+
+        #define priors here? Not great to have answers depend on the priors for each ion...
 
         for run in runList:
             print(run['Name'])
