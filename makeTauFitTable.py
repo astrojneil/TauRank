@@ -64,7 +64,7 @@ def openRankedFile(filename):
 def runemcee(taus, pixelFrac):
     ndim, nwalkers = 2, 200
     burnin = 50
-    r = np.ones(ndim)
+    r = np.zeros(ndim)+1.e-3
     pos = [r + 1.e-4*np.random.randn(ndim) for i in range(nwalkers)]
     sampler = emcee.EnsembleSampler(nwalkers, ndim, lnprob, args=(taus, pixelFrac, 1.e-2, 2*max(taus)))
 
@@ -244,7 +244,7 @@ def main():
 
 
     ionList = []
-    ionList.append(ion1)
+    #ionList.append(ion1)
     ionList.append(ion2)
     ionList.append(ion3)
     ionList.append(ion4)
@@ -259,7 +259,7 @@ def main():
     #now the real work
     for ion in ionList:
         print('Started '+ion['ionfolder'][1:-1])
-        ionTable = open('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters_2.txt', 'w')
+        ionTable = open('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters_3.txt', 'w')
         #write column headers
         ionTable.write('Run, velocity(km/s), tau_fit, upper_tau_err, lower_tau_err, b_fit, upper_b_err, lower_b_err, area, area_err\n')
 
