@@ -82,7 +82,7 @@ run13 = { 'Name':'T3_v430_chi3000',
         'Mach':0.5,
         'f_list':['0010', '0011', '0016', '0024'],
         'marker':'o',
-        'color':'#ae66bc'}
+        'color':'#f4bd54'}
 run14 = { 'Name':'T3_v860_chi3000',
         'Dir':'../../Blob_paper1/Files/',
         'Mach':1.0,
@@ -113,7 +113,7 @@ run16 = { 'Name':'T1_v3000_chi1000',
         'Mach':6.2,
         'f_list':['0022', '0032', '0048', '0095'],
         'marker':'o',
-        'color':'#08277b'}
+        'color':'#005b10'}
 
 run18 = { 'Name':'T10_v1500_chi10000',
         'Dir':'../../Blob_paper1/Files/',
@@ -168,12 +168,12 @@ runList.append(run8)
 runList.append(run9)
 runList.append(run10)
 runList.append(run11)
-#runList.append(run13)
+runList.append(run13)
 runList.append(run14)
 runList.append(run12)
 runList.append(run17)
 runList.append(run15)
-#runList.append(run16)
+runList.append(run16)
 runList.append(run18)
 runList.append(run19)
 runList.append(run20)
@@ -286,5 +286,5 @@ for ion in ionList:
     #plt.xscale('log')
     fig.set_size_inches(12, 6)
     #fig.savefig('test.png')
-    #fig.savefig('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'.png')
+    fig.savefig('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'.png')
     fig.savefig('tauBAnalysis_all/'+ion['ionfolder'][1:-1]+'.png')
