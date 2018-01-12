@@ -1,0 +1,67 @@
+##### Runs to have spectra generated #######
+run1 = { 'Name':'T0.3_v1000_chi300_cond',
+        'marker':'^',
+        'color':'#4c95cb'}
+run2 = { 'Name':'T0.3_v1700_chi300_cond',
+        'marker':'^',
+        'color':'#0068b6'}
+run3 = { 'Name':'T0.3_v3000_chi300_cond',
+        'marker':'^',
+        'color':'#00487f'}
+run5 = { 'Name':'T3_v860_chi3000_cond',
+            'marker':'^',
+            'color':'#f0a10b'}
+run4 = { 'Name':'T3_v3000_chi3000_cond',
+        'marker':'^',
+        'color':'#a87007'}
+run7 = { 'Name':'T1_v480_chi1000_cond',
+        'marker':'^',
+        'color':'#4ca85c'}
+run6 = { 'Name':'T1_v1700_chi1000_cond',
+        'marker':'^',
+        'color':'#008317'}
+run8 = { 'Name':'T10_v1500_chi10000_cond',
+        'marker':'^',
+        'color':'#a90606'}
+run9 = { 'Name':'T0.3_v1000_chi300',
+        'marker':'o',
+        'color':'#4c95cb'}
+run10 = { 'Name':'T0.3_v1700_chi300',
+        'marker':'o',
+        'color':'#0068b6'}
+run11 = { 'Name':'T0.3_v3000_chi300',
+        'marker':'o',
+        'color':'#00487f'}
+run13 = { 'Name':'T3_v430_chi3000',
+        'marker':'o',
+        'color':'#f4bd54'}
+run14 = { 'Name':'T3_v860_chi3000',
+        'marker':'o',
+        'color':'#f0a10b'}
+run12 = { 'Name':'T3_v3000_chi3000',
+        'marker':'o',
+        'color':'#a87007'}
+run17 = { 'Name':'T1_v480_chi1000',
+        'marker':'o',
+        'color':'#4ca85c'}
+run15 = { 'Name':'T1_v1700_chi1000',
+        'marker':'o',
+        'color':'#008317'}
+run16 = { 'Name':'T1_v3000_chi1000',
+        'marker':'o',
+        'color':'#005b10'}
+run18 = { 'Name':'T10_v1500_chi10000',
+        'marker':'o',
+        'color':'#a90606'}
+run19 = { 'Name':'HC_v1000_chi300_cond',
+        'marker':'s',
+        'color':'#4c95cb'}
+run20 = { 'Name':'HC_v1700_chi1000_cond',
+        'marker':'s',
+        'color':'#008317'}
+run21 = { 'Name':'HC_v3000_chi3000_cond',
+        'marker':'s',
+        'color':'#a87007'}
+run22 = { 'Name':'LowCond_v1700_chi300_cond',
+        'marker':'.',
+        'color':'black'}
