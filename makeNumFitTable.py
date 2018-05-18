@@ -83,14 +83,15 @@ def runemcee(taus, pixelFrac):
     return tau_mcmc, b_mcmc, model_area
 
 def find_b_vel(runName, frame, ion):
-    bulkInfo = open('../rankNum/Totalrun_allIon_bv.txt', 'r')
+    bulkInfo = open('../rankNum/Totalrun_allIon_bv_temp.txt', 'r')
     for line in bulkInfo:
         ls = line.split(', ')
         if runName==ls[0] and ls[1]==str(frame) and ls[2]==ion:
             #save velocity and b info
             vel = float(ls[3])
             b = float(ls[4])
-    return vel, b
+            T = float(ls[5])
+    return vel, b, T
 
 
 
@@ -247,9 +248,9 @@ def main():
     ion6 = {'ion':'Si IV',
             'fieldname':'Si_p3_number_density',
             'ionfolder': '/SiIV/'}
-    ion7 = {'ion':'Ne VII',
-            'fieldname':'Ne_p6_number_density',
-            'ionfolder': '/NeVII/'}
+    ion7 = {'ion':'Ne VIII',
+            'fieldname':'Ne_p7_number_density',
+            'ionfolder': '/NeVIII/'}
     ion8 = {'ion':'H I',
             'fieldname':'H_p0_number_density',
             'ionfolder': '/HI/'}
@@ -263,30 +264,30 @@ def main():
 
     ionList = []
     ionList.append(ion1)
-    #ionList.append(ion2)
-    #ionList.append(ion3)
-    #ionList.append(ion4)
-    #ionList.append(ion5)
-    #ionList.append(ion6)
-    #ionList.append(ion7)
-    #ionList.append(ion8)
-    #ionList.append(ion9)
-    #ionList.append(ion10)
+    ionList.append(ion2)
+    ionList.append(ion3)
+    ionList.append(ion4)
+    ionList.append(ion5)
+    ionList.append(ion6)
+    ionList.append(ion7)
+    ionList.append(ion8)
+    ionList.append(ion9)
+    ionList.append(ion10)
 
 
     #now the real work
-    for ion in ionList:
+    for ion in [ion1]:
         print('Started '+ion['ionfolder'][1:-1])
-        ionTable = open('../rankNum'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters.txt', 'w')
+        ionTable = open('../rankNum'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters_withTemp.txt', 'w')
         #write column headers
-        ionTable.write('Run, velocity(km/s), b(km/s), N_fit, upper_N_err, lower_N_err, q_fit, upper_q_err, lower_q_err, area, area_err\n')
+        ionTable.write('Run, velocity(km/s), b(km/s), Temp(K), N_fit, upper_N_err, lower_N_err, q_fit, upper_q_err, lower_q_err, area, area_err\n')
 
         #define priors here? Not great to have answers depend on the priors for each ion...
 
-        for run in [run1]:
+        for run in [run23, run6]:
             print(run['Name'])  #velocities are in km/s
 
-            for v in range(4): #velocity = velBins[v]
+            for v in range(len(run['f_list'])): #velocity = velBins[v]
                 taus = openRankedFile('../rankNum'+ion['ionfolder']+'rankNum'+run['Name']+'_v'+str(v)+'.txt')
                 totalpixel = len(taus)
                 pixelNum = np.arange(0.0, totalpixel, 1.0)
@@ -299,9 +300,9 @@ def main():
                 t_fit, q_fit, area_fit = runemcee(taus_new, pixelFrac_new)
 
                 #find the average velocity and b parameter for this run and "frame" by scanning the "Totalrun_allIon_bv"
-                vel, b = find_b_vel(run['Name'], v, ion['ionfolder'][1:-1])
+                vel, b, Temp = find_b_vel(run['Name'], v, ion['ionfolder'][1:-1])
 
-                runinfo = run['Name']+', '+str(int(round(vel/1e5, 3)))+', '+str(int(round(b/1e5, 3)))
+                runinfo = run['Name']+', '+str(round(vel/1e5, 3))+', '+str(round(b/1e5, 3))', '+str(round(Temp, 3))
                 tauinfo = str(t_fit[0])+', '+str(t_fit[1])+', '+str(t_fit[2])
                 qinfo = str(q_fit[0])+', '+str(q_fit[1])+', '+str(q_fit[2])
                 areainfo = str(area_fit[0])+', '+str(area_fit[1])

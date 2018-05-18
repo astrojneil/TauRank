@@ -24,7 +24,7 @@ run1 = { 'Name':'T0.3_v1000_chi300_cond',
         'tcc':1.7,
         'f_list':['0013', '0038', '0080', '0132'],
         'marker':'^',
-        'color':green2}
+        'color':green1}
 run2 = { 'Name':'T0.3_v1700_chi300_cond',
         'Name_plot':'M6.5-v1700-T0.3-c',
         'Dir':'../../Blob_paper2/Files/',
@@ -32,7 +32,7 @@ run2 = { 'Name':'T0.3_v1700_chi300_cond',
         'tcc':1.0,
         'f_list':['0003', '0020', '0046', '0078'],
         'marker':'^',
-        'color':yellow1}
+        'color':yellow2}
 run3 = { 'Name':'T0.3_v3000_chi300_cond',
         'Name_plot':'M11.4-v3000-T0.3-c',
         'Dir':'../../Blob_paper2/Files/',
@@ -40,7 +40,7 @@ run3 = { 'Name':'T0.3_v3000_chi300_cond',
         'tcc':0.56,
         'f_list':['0001', '0004', '0014', '0035'],
         'marker':'^',
-        'color':red1}
+        'color':red2}
 run4 = { 'Name':'T3_v3000_chi3000_cond',
         'Name_plot':'M3.6-v3000-T3-c',
         'Dir':'../../Blob_paper2/Files/',
@@ -48,7 +48,7 @@ run4 = { 'Name':'T3_v3000_chi3000_cond',
         'tcc':1.8,
         'f_list':['0001', '0004', '0007', '0010'],
         'marker':'^',
-        'color':red2}
+        'color':green3}
 run5 = { 'Name':'T3_v860_chi3000_cond',
         'Name_plot':'M1.0-v860-T3-c',
         'Dir':'../../Blob_paper2/Files/',
@@ -64,7 +64,7 @@ run6 = { 'Name':'T1_v1700_chi1000_cond',
         'tcc':1.8,
         'f_list':['0002', '0010', '0017', '0028'],
         'marker':'^',
-        'color':yellow2}
+        'color':green2}
 run7 = { 'Name':'T1_v480_chi1000_cond',
         'Name_plot':'M1.0-v480-T1-c',
         'Dir':'../../Blob_paper2/Files/',
@@ -80,35 +80,35 @@ run8 = { 'Name':'T10_v1500_chi10000_cond',
         'tcc':6.5,
         'f_list':['0001', '0002', '0004', '0008'],
         'marker':'^',
-        'color':yellow3}
+        'color':blue3}
 run9 = { 'Name':'T0.3_v1000_chi300',
         'Name_plot':'M3.8-v1000-T0.3',
         'Dir':'../../Blob_paper1/Files/',
         'Mach':3.8,
         'f_list':['0025', '0033', '0042', '0058'],
         'marker':'o',
-        'color':green2}
+        'color':green1}
 run10 = { 'Name':'T0.3_v1700_chi300',
         'Name_plot':'M6.5-v1700-T0.3',
         'Dir':'../../Blob_paper1/Files/',
         'Mach':6.5,
         'f_list':['0022', '0032', '0053', '0085'],
         'marker':'o',
-        'color':yellow1}
+        'color':yellow2}
 run11 = { 'Name':'T0.3_v3000_chi300',
         'Name_plot':'M11.4-v3000-T0.3',
         'Dir':'../../Blob_paper1/Files/',
         'Mach':11.4,
         'f_list':['0028', '0044', '0065', '0110'],
         'marker':'o',
-        'color':red1}
+        'color':red2}
 run12 = { 'Name':'T3_v3000_chi3000',
         'Name_plot':'M3.6-v3000-T3',
         'Dir':'../../Blob_paper1/Files/',
         'Mach':3.6,
         'f_list':['0021', '0030', '0040', '0062'],
         'marker':'o',
-        'color':red3}
+        'color':green3}
 run13 = { 'Name':'T3_v430_chi3000',
         'Name_plot':'M0.5-v430-T3',
         'Dir':'../../Blob_paper1/Files/',
@@ -122,21 +122,21 @@ run14 = { 'Name':'T3_v860_chi3000',
         'Mach':1.0,
         'f_list':['0010', '0018', '0030', '0038'],
         'marker':'o',
-        'color':blue3}
+        'color':blue2}
 run15 = { 'Name':'T1_v1700_chi1000',
         'Name_plot':'M3.5-v1700-T1',
         'Dir':'../../Blob_paper1/Files/',
         'Mach':3.5,
         'f_list':['0021', '0029', '0038', '0052'],
         'marker':'o',
-        'color':yellow2}
+        'color':green2}
 run16 = { 'Name':'T1_v3000_chi1000',
         'Name_plot':'M6.2-v3000-T1',
         'Dir':'../../Blob_paper1/Files/',
         'Mach':6.2,
         'f_list':['0022', '0032', '0048', '0095'],
         'marker':'o',
-        'color':red2}
+        'color':yellow3}
 run17 = { 'Name':'T1_v480_chi1000',
         'Name_plot':'M1.0-v480-T1',
         'Dir':'../../Blob_paper1/Files/',
@@ -150,28 +150,28 @@ run18 = { 'Name':'T10_v1500_chi10000',
         'Mach':1.0,
         'f_list':['0014', '0021', '0029', '0044'],
         'marker':'o',
-        'color':yellow3}
+        'color':blue3}
 run19 = { 'Name':'HC_v1000_chi300_cond',
         'Name_plot':'M3.8-v1000-T0.3-hc',
         'Dir':'../../Blob_paper3/Files/',
         'Mach':3.8,
         'f_list':['0054', '0060', '0080', '0107'],
         'marker':'s',
-        'color':green2}
+        'color':green1}
 run20 = { 'Name':'HC_v1700_chi1000_cond',
         'Name_plot':'M3.5-v1700-T1-hc',
         'Dir':'../../Blob_paper3/Files/',
         'Mach':3.5,
         'f_list':['0024', '0050', '0082', '0083'],
         'marker':'s',
-        'color':yellow2}
+        'color':green2}
 run21 = { 'Name':'HC_v3000_chi3000_cond',
         'Name_plot':'M3.6-v3000-T3-hc',
         'Dir':'../../Blob_paper3/Files/',
         'Mach':3.6,
         'f_list':['0007', '0015', '0026', '0049'],
         'marker':'s',
-        'color':red2}
+        'color':green3}
 run22 = { 'Name':'LowCond_v1700_chi300_cond',
         'Name_plot':'M6.5-v1700-T0.3-lc',
         'Dir':'../../Blob_paper3/Files/',
@@ -254,6 +254,9 @@ runListVel.append(run20)
 runListVel.append(run21)
 runListVel.append(run22)
 
+runListRes = []
+runListRes.append(run15)
+#runListRes.append(run23)
 
 
 
@@ -300,9 +303,9 @@ ion6 = {'ion':'Si IV',
             'axis': [1, 1],
             'loc':[-3.0, 18.5],
             'split':[-2.25, 2.5, 2, 2.5]}
-ion7 = {'ion':'Ne VII',
-            'fieldname':'Ne_p6_number_density',
-            'ionfolder': '/NeVII/',
+ion7 = {'ion':'Ne VIII',
+            'fieldname':'Ne_p7_number_density',
+            'ionfolder': '/NeVIII/',
             'color':'pink',
             'axis': [3, 0],
             'loc':[-3.0, 16.5],
@@ -343,7 +346,7 @@ ionList.append(ion8)
 ionList.append(ion10)
 
 def readbestTauB(ion, runName):
-    openfile = open('../rankNum'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters.txt', 'r')
+    openfile = open('../rankNum'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters_withTemp.txt', 'r')
     Taus = []
     bs = []
     for line in openfile:
@@ -375,7 +378,7 @@ for ion in ionList:
     #    ax[ion['axis'][0], ion['axis'][1]].plot([ion['split'][0], ion['split'][2]], [ion['split'][1], ion['split'][3]], linestyle = 'dashed', color = 'gray', alpha = 0.9)
 
 ax[3,0].set_xlabel(r'$log(q)$', fontsize=14)
-ax[2,0].set_ylabel(r'$log(N)$', fontsize=14)
+plt.ylabel(r'$log(N_0\ (\rm{cm}^{-2}))$', fontsize=14)
 ldg = ax[3, 0].legend(loc='upper left', bbox_to_anchor=(0.05, -0.2), fontsize=10, ncol=4)
 #box = ax[ion['axis'][0], ion['axis'][1]].get_position()
 #ax[ion['axis'][0], ion['axis'][1]].set_position([box.x0, box.y0, box.width * 0.8, box.height])
@@ -385,5 +388,5 @@ fig.set_size_inches(10, 12)
 plt.tight_layout()
 
 
-#fig.savefig('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'.png')
-fig.savefig('Num_jumboVel_dashed.png', bbox_extra_artists=(ldg,), bbox_inches='tight')
+#fig.savefig('../rankTau'+ion['ionfolder']+ion['ionfolder'][1:-1]+'.pdf')
+fig.savefig('Num_jumboMach_new.pdf', bbox_extra_artists=(ldg,), bbox_inches='tight')

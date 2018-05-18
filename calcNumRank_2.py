@@ -85,7 +85,7 @@ def calcRankTau(directory, runName, runNumber, ions, velocityBin, frameVel):
 
     bList = []
     vList = []
-    Tlist = []
+    TList = []
     #add ion fields to the dataset
     for ion in ions:
         tri.add_ion_fields(data, ions=[ion['ion']])
@@ -108,7 +108,7 @@ def calcRankTau(directory, runName, runNumber, ions, velocityBin, frameVel):
         #find the average velocity for the ion
         average_vely = reg.quantities.weighted_average_quantity('vely', ion['fieldname'])+frameVel
 
-        average_temp = reg.quanities.weighted_average_quantity('temperature', ion['fieldname'])
+        average_temp = reg.quantities.weighted_average_quantity('temperature', ion['fieldname'])
 
 
         #write the ranked column densities to a file
@@ -344,12 +344,12 @@ def main():
         'data_file': '../Files/S1226-redward-forJNeil',
         'sigma': 1.4555e-19,
         'massNum': 12.0}
-    ion5 = {'ion': 'Ne VII',
-            'fieldname': 'Ne_p6_number_density',
-            'ionfolder':'/NeVII/',
-            'rest_wave': 465.22,
+    ion5 = {'ion': 'Ne VIII',
+            'fieldname': 'Ne_p7_number_density',
+            'ionfolder':'/NeVIII/',
+            'rest_wave': 770.406,
             'data_file': '../Files/S1226-o6-forJNeil',
-            'sigma': 2.1922e-19,
+            'sigma': 6.74298e-19,
             'massNum': 20.0}
     ion6 = {'ion': 'C III',
             'fieldname': 'C_p2_number_density',
@@ -379,7 +379,7 @@ def main():
             'data_file': '../Files/S1226-redward-forJNeil',
             'sigma': 3.0694e-18,
             'massNum': 28.0}
-    ion10 = {'ion': 'H I 1215.67',
+    ion10 = {'ion': 'H I 1215',
             'fieldname': 'H_p0_number_density',
             'ionfolder':'/HI/',
             'rest_wave': 1215.67,
@@ -402,7 +402,7 @@ def main():
 
 
 ### run though functions!
-    writebv_file = open('../rankNum/Totalrun_allIon_bv_highres.txt', 'w')
+    writebv_file = open('../rankNum/Totalrun_allIon_bv_temp.txt', 'w')
     writebv_file.write('Run, frame, Ion, Average_vel(cm/s), b(cm/s), T(K)\n')
     for run in runList:
 
@@ -414,7 +414,7 @@ def main():
             bList, vList, TList = calcRankTau(run['Dir'], run['Name'], run['f_list'][v], ionList, v, velFrames[v])
 
             for i in range(len(ionList)):
-                writeString = run['Name']+', '+str(v)+', '+ionList[i]['ionfolder'][1:-1]+', '+str(vList[i].value)+', '+str(bList[i])+', '+str(TList[i])'\n'
+                writeString = run['Name']+', '+str(v)+', '+ionList[i]['ionfolder'][1:-1]+', '+str(vList[i].value)+', '+str(bList[i])+', '+str(TList[i])+'\n'
                 print(writeString)
                 writebv_file.write(writeString)
     writebv_file.close()
