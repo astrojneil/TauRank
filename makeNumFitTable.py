@@ -90,7 +90,7 @@ def find_b_vel(runName, frame, ion):
             #save velocity and b info
             vel = float(ls[3])
             b = float(ls[4])
-            T = float(ls[5])
+            T = float(ls[5][:-2])
     return vel, b, T
 
 
@@ -276,7 +276,7 @@ def main():
 
 
     #now the real work
-    for ion in [ion1]:
+    for ion in [ion10]:
         print('Started '+ion['ionfolder'][1:-1])
         ionTable = open('../rankNum'+ion['ionfolder']+ion['ionfolder'][1:-1]+'_bestFitParameters_withTemp.txt', 'w')
         #write column headers
@@ -284,9 +284,11 @@ def main():
 
         #define priors here? Not great to have answers depend on the priors for each ion...
 
-        for run in [run23, run6]:
+        for run in runList:
             print(run['Name'])  #velocities are in km/s
-
+            vel = 0.
+            b = 0.
+            Temp = 0.
             for v in range(len(run['f_list'])): #velocity = velBins[v]
                 taus = openRankedFile('../rankNum'+ion['ionfolder']+'rankNum'+run['Name']+'_v'+str(v)+'.txt')
                 totalpixel = len(taus)
@@ -302,7 +304,7 @@ def main():
                 #find the average velocity and b parameter for this run and "frame" by scanning the "Totalrun_allIon_bv"
                 vel, b, Temp = find_b_vel(run['Name'], v, ion['ionfolder'][1:-1])
 
-                runinfo = run['Name']+', '+str(round(vel/1e5, 3))+', '+str(round(b/1e5, 3))', '+str(round(Temp, 3))
+                runinfo = run['Name']+', '+str(round(vel/1e5, 3))+', '+str(round(b/1e5, 3))+', '+str(round(Temp, 3))
                 tauinfo = str(t_fit[0])+', '+str(t_fit[1])+', '+str(t_fit[2])
                 qinfo = str(q_fit[0])+', '+str(q_fit[1])+', '+str(q_fit[2])
                 areainfo = str(area_fit[0])+', '+str(area_fit[1])
